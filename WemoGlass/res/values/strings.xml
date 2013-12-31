@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WemoGlass</string>
+    <!-- I know this is spelt wrong. For the voice trigger to work, it has to be spelt this way -->
+    <string name="trigger_phrase">Weemo</string>
+    <string name="searching_devices">Searching for devices</string>
+    <string name="no_devices">No Devices Found</string>
+    <string name="devices_found">devices found. Tap for more options</string>
+    <string name="refresh">Refresh</string>
+    <string name="stop">Stop</string>
+    <string name="speak">Speak</string>
+    <string name="on">on</string>
+    <string name="turn">turn</string>
+    <string name="off">off</string>
+    <string name="device_info">Device Info</string>
+    <string name="state">State:</string>
+    <string name="turn_on">Turn On</string>
+    <string name="turn_off">Turn Off</string>
+</resources>

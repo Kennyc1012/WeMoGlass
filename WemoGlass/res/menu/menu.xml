@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item 
+        android:id="@+id/speak"
+        android:icon="@drawable/ic_microphone_on_50"
+        android:title="@string/speak"/>
+	<item 
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_sync_50"
+        android:title="@string/refresh"/>
+	<item 
+        android:id="@+id/info"
+        android:icon="@drawable/ic_help_50"
+        android:title="@string/device_info"/>
+	<item 
+        android:id="@+id/stop"
+        android:icon="@drawable/ic_no_50"
+        android:title="@string/stop"/>
+</menu>
