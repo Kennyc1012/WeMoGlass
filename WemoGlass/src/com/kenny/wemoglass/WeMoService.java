@@ -208,7 +208,7 @@ public class WeMoService extends Service
 		     menuIntent.putExtra("speech", true);
 		     startActivity(menuIntent);
 		}
-		return super.onStartCommand(intent, flags, startId);
+		return START_STICKY;
 	}	
 	/***
 	 * Parses the given phrase.

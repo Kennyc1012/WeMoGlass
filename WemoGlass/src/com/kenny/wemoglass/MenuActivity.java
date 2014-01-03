@@ -67,7 +67,7 @@ public class MenuActivity extends Activity
             unbindService(mConnection);
             bound = false;
         }
-		super.onDestroy();
+		super.onStop();
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 

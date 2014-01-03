@@ -67,6 +67,8 @@ public final class R {
         public static final int speak=0x7f060007;
         public static final int state=0x7f06000c;
         public static final int stop=0x7f060006;
+        /**  I know this is spelt wrong. For the voice trigger to work, it has to be spelt this way 
+         */
         public static final int trigger_phrase=0x7f060001;
         public static final int turn=0x7f060009;
         public static final int turn_off=0x7f06000e;
