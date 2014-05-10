@@ -15,7 +15,6 @@ import com.belkin.wemo.localsdk.WeMoSDKContext;
 import com.belkin.wemo.localsdk.WeMoSDKContext.NotificationListener;
 import com.google.android.glass.media.Sounds;
 import com.google.android.glass.timeline.LiveCard;
-import com.google.android.glass.timeline.TimelineManager;
 public class WeMoService extends Service
 {
 	//Interface that fires when our list of devices gets updated
@@ -26,7 +25,6 @@ public class WeMoService extends Service
 	private UpdateListener updateListener;
 	private final String CARD_ID="wemo_glass";
 	private LiveCard liveCard;
-	private TimelineManager timelineManager;
 	//Object that handles all of the WeMo devices
 	private WeMoSDKContext wemoContext = null;
 	//List to keep track of our devices
@@ -37,7 +35,7 @@ public class WeMoService extends Service
 	@Override
 	public void onCreate() 
 	{
-		timelineManager = TimelineManager.from(this);
+		super.onCreate();
 		devices= new ArrayList<WeMoDevice>();
 		audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
 		wemoContext = new WeMoSDKContext(getApplicationContext());		
@@ -140,7 +138,6 @@ public class WeMoService extends Service
 				liveCard.setViews(remoteViews);
 			}
 		};
-		super.onCreate();
 	}
 	@Override
 	public void onDestroy() 
@@ -190,7 +187,7 @@ public class WeMoService extends Service
 	{
 		if (liveCard == null) 
 	    {
-			liveCard = timelineManager.createLiveCard(CARD_ID);
+			liveCard =  new LiveCard(getApplicationContext(), CARD_ID);
 	        // Display the options menu when the live card is tapped.
 	        Intent menuIntent = new Intent(this, MenuActivity.class);
 	        menuIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -218,11 +215,7 @@ public class WeMoService extends Service
 	{
 		//Split our phrase and get each word
 		//The phrases that will be acceptable will be Turn On <Device Name> and Turn Off <Device Name>
-		String[] results=speech.split("\\s");
-		for(int i=0;i<results.length;i++)
-		{
-			Log.e(""+i,results[i]);
-		}
+		String[] results=speech.split("\\s");		
 		//Make sure our phrase matches the acceptable conditions
 		if(results!=null&&results.length>=3)
 		{

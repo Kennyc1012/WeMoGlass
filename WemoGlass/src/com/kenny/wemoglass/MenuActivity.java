@@ -11,7 +11,6 @@ import android.os.IBinder;
 import android.speech.RecognizerIntent;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.google.android.glass.media.Sounds;
 import com.kenny.wemoglass.WeMoService.LocalBinder;
 public class MenuActivity extends Activity 
@@ -36,28 +35,23 @@ public class MenuActivity extends Activity
         }
     };
 	@Override
-	protected void onResume() 
+    public void onAttachedToWindow() 
 	{
-		//if we get the extra speech as true, launch the speech recognition service right away
+        super.onAttachedToWindow();
+        //Bind to our service so we can manipulate theMediaPlayer if needed
+        Intent intent = new Intent(this, WeMoService.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+    	//if we get the extra speech as true, launch the speech recognition service right away
 		if(getIntent().getBooleanExtra("speech", false))
 		{
-			Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-			startActivityForResult(intent, SPEECH_ACTIVITY);
+			Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+			startActivityForResult(i, SPEECH_ACTIVITY);
 		}
 		else
 		{
 			openOptionsMenu();
 		}
-		super.onResume();
-	}
-	@Override
-	protected void onStart()
-	{
-		//Bind to our service
-		Intent intent = new Intent(this, WeMoService.class);
-	    bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-		super.onStart();
-	}
+    }
 	@Override
 	protected void onStop() 
 	{

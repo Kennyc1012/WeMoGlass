@@ -82,7 +82,7 @@ public class DeviceInfo extends Activity
         		card.setText(R.string.no_devices);
         		card.setFootnote(R.string.app_name);
         		card.addImage(R.drawable.ic_warning_150);
-        		setContentView(card.toView());
+        		setContentView(card.getView());
         	}
             bound = true;            
         }
@@ -154,6 +154,11 @@ public class DeviceInfo extends Activity
 			return null;
 		}
 		@Override
+		public int getPosition(Object arg0) 
+		{
+			return 0;
+		}
+		@Override
 		public long getItemId(int position) 
 		{
 			return 0;
@@ -197,16 +202,6 @@ public class DeviceInfo extends Activity
 			}
 			return convertView;
 		}	
-		@Override
-		public int findIdPosition(Object arg0) 
-		{
-			return 0;
-		}
-		@Override
-		public int findItemPosition(Object arg0) 
-		{
-			return 0;
-		}
 		class ViewHolder
 		{
 			ImageView logo;
@@ -274,6 +269,7 @@ public class DeviceInfo extends Activity
 				cache.clearCache();
 			}
 		}
+		
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 
